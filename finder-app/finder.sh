@@ -25,9 +25,10 @@ if [ -z $filedir ]
     exit 1
     else
         if [ -d $filedir ]; then
-            echo "Directory does exist"
+            #echo "Directory does exist"
+            echo ""
         else
-            echo "Directory does NOT exist!"
+            #echo "Directory does NOT exist!"
             exit 1
     fi
 fi
@@ -39,9 +40,8 @@ if [ -z $searchstr ]
     exit 1
 fi
 
-files=$(find $filedir  | wc -l)
-matches=$(find $filedir| grep $searchstr| wc -l)
 
-echo "The number of files are" $files "and the number of matching lines are" $matches
+NUMFILES=$(find $filedir  | wc -l)
+NUMMATCH=$(find $filedir | grep -r $searchstr | wc -l)
 
-
+echo "The number of files are ${NUMFILES} and the number of matching lines are ${NUMMATCH}"
